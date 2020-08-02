@@ -1,0 +1,33 @@
+:host{
+    display: flex;
+    justify-content: center;
+}
+
+div{
+    width: 575px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+button{
+    color:#2F80ED;
+    text-decoration-line: underline;
+    background-color: inherit;
+}
+button:focus{
+    color:#2F80ED;
+    text-decoration-line: none;
+}
+p{
+    margin-right: 10px;
+    color: #929292;
+}
+
+button:not(:last-child){
+    margin-right: 21px;
+}
+input{
+    width: 149px;
+    height: 13px;
+    text-indent: 6px;
+}
