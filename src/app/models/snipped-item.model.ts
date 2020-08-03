@@ -2,15 +2,15 @@ import { ThumbnailsItemModel } from './thumbnails-item.model';
 import { LocalizedItemModel } from './localized-item.model';
 
 export class SnippedItemModel {
-    publishedAt: string;
-    channelId: string;
-    title: string;
-    description: string;
-    thumbnails: ThumbnailsItemModel;
-    channelTitle: string;
-    tags: string[];
-    categoryId: string;
-    liveBroadcastContent: string;
-    localized: LocalizedItemModel;
-    defaultAudioLanguage: string;
+    public publishedAt: string;
+    public channelId: string;
+    public title: string;
+    public description: string;
+    public thumbnails: ThumbnailsItemModel;
+    public channelTitle: string;
+    public tags: string[];
+    public categoryId: string;
+    public liveBroadcastContent: string;
+    public localized: LocalizedItemModel;
+    public defaultAudioLanguage: string;
 }

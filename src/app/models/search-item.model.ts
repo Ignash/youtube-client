@@ -2,9 +2,9 @@ import { SnippedItemModel } from './snipped-item.model';
 import { StatisticsItemModel } from './statistics-item.model';
 
 export class SearchItemModel {
-    kind: string;
-    etag: string;
-    id: string;
-    snippet: SnippedItemModel;
-    statistics: StatisticsItemModel
+    public kind: string;
+    public etag: string;
+    public id: string;
+    public snippet: SnippedItemModel;
+    public statistics: StatisticsItemModel;
 }

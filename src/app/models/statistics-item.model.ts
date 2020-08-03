@@ -1,7 +1,7 @@
 export class StatisticsItemModel {
-    viewCount: string;
-    likeCount: string;
-    dislikeCount: string;
-    favoriteCount: string;
-    commentCount: string;
+    public viewCount: string;
+    public likeCount: string;
+    public dislikeCount: string;
+    public favoriteCount: string;
+    public commentCount: string;
 }

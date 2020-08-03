@@ -7,13 +7,13 @@ import { SearchItemModel } from '../../models/search-item.model';
   styleUrls: ['./search-item.component.scss']
 })
 export class SearchItemComponent implements OnInit {
-  @Input() item: SearchItemModel;
+  @Input() public item: SearchItemModel;
 
   // imgUrl: string = this.item;
 
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
 
   }
 

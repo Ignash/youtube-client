@@ -1,9 +1,9 @@
-import { PageInfoResponseModel } from "./page-info-response.model"
-import { SearchItemModel } from "./search-item.model"
+import { PageInfoResponseModel } from './page-info-response.model';
+import { SearchItemModel } from './search-item.model';
 
 export class SearchResponseModel {
-    kind: string;
-    etag: string;
-    pageInfo: PageInfoResponseModel;
-    items: SearchItemModel[];
+    public kind: string;
+    public etag: string;
+    public pageInfo: PageInfoResponseModel;
+    public items: SearchItemModel[];
 }

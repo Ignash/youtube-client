@@ -9,7 +9,7 @@ export class FilterBlockComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
 }
