@@ -1,4 +1,4 @@
 export class LocalizedItemModel {
-    title: string;
-    description: string;
+    public title: string;
+    public description: string;
 }
