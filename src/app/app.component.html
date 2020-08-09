@@ -1,2 +1,4 @@
-<app-header></app-header>
-<search-model></search-model>
+<app-header (showBlockToParent)="changeShowResult($event)" (showSettingsToParent)="changeShowSettings($event)"></app-header>
+
+<filter-block (changeSortingValue)="changeSorting($event)" (changeStrFilterValue)="changeFilterStr($event)" *ngIf="showSettings"></filter-block>
+<search-model [sort]="sortValue" [filterStr]="filterStr" *ngIf="showResult"></search-model>

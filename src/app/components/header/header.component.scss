@@ -1,36 +1,22 @@
 header{
-    background: #E5E5E5;
-}
-.seach-logo{
-    
     width: 100%;
     height: 80px;
+    background: #E5E5E5;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.seach-logo>div:first-child{
-    flex-basis: 25%;
-}
-button{
-    background-color: #2F80ED;
-    height: 24px;
-    margin-left: 10px;
-    border-radius: 4px 4px;
-    color: #FFFFFF;
-    box-shadow: 2px 0px 4px #2F80ED;
-}
+
 .center{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 575px;
     flex-basis: 50%;
+    margin-left: 25%;
 }
-svg{
-    margin: 4.5px;
-}
+
 img{
-    margin-right: 10px;
+    
 }
 
