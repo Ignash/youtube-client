@@ -1,0 +1,24 @@
+
+button{
+    color:#2F80ED;
+    text-decoration-line: underline;
+    background-color: inherit;
+}
+button:focus{
+    color:#2F80ED;
+    text-decoration-line: none;
+}
+
+button:not(:last-child){
+    margin-right: 21px;
+}
+button:last-child{
+    margin-right: 10px;
+}
+
+p{
+    margin-right: 10px;
+    color: #929292;
+    display: inline;
+}
+

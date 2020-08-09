@@ -1,1 +1,1 @@
-<search-item *ngFor="let item of items" [item]=item></search-item>
+<search-item *ngFor="let item of items | filterByWord : filterStr | sorting : sort " [item]=item></search-item>
