@@ -26,7 +26,10 @@ export class BorderColorDirective implements OnInit {
     if ( diffDays < 31) {
       return 'green';
     }
-    if ( diffDays > 180) {
+    if ( diffDays < 180) {
+      return 'yellow';
+    }
+    if ( diffDays >= 180) {
       return 'red';
     }
 
