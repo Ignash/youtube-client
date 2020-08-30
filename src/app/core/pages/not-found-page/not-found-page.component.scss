@@ -1,0 +1,16 @@
+:host{
+    font-weight: bold;
+    font-size: 24px;
+    color: #828282;
+    line-height: 28px;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc( 100vh - 120px);
+}
+span{
+    margin-left: 25px;
+}

@@ -58,5 +58,25 @@ button {
   margin-left: 3px;
 }
 
+.button-blue{
+  background: #2F80ED;
+  border-radius: 5px;
+  text-align: center;
+  color: #FFFFFF;
+  box-shadow: 2px 0px 4px #2F80ED;
+}
+
+.button-blue:hover{
+  background: #85B9FF;
+  box-shadow: 2px 0px 4px #85B9FF;
+}
+
+.statistic-icon{
+  display: flex;
+  p{
+    margin-left: 3px;
+  }
+}
+
 
   
