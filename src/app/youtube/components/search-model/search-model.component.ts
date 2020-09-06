@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SearchResponseModel } from '../../models/search-response.model';
-import { SearchItemModel } from '../../models/search-item.model';
+import { SearchItemModel } from '../../../core/models/search-item.model';
 
 import { BoardService } from '../../../core/services/board.service';
 
@@ -19,9 +18,10 @@ export class SearchModelComponent implements OnInit {
   constructor(private http: HttpClient, private boardService: BoardService) { }
 
   public ngOnInit(): void {
-    this.boardService.getData().subscribe((data: SearchResponseModel ) => {
-      this.items = [...data.items];
+    this.boardService.data$.subscribe((data: SearchItemModel[] ) => {
+      this.items = data;
     });
+
     this.boardService.sortingValue$.subscribe(value => this.sort = value);
     this.boardService.filtrStr$.subscribe(value => this.filterStr = value);
   }

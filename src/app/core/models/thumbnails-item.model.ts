@@ -4,6 +4,5 @@ export class ThumbnailsItemModel {
     public default: ThumbnailsSizeItemModel;
     public medium: ThumbnailsSizeItemModel;
     public high: ThumbnailsSizeItemModel;
-    public standard: ThumbnailsSizeItemModel;
-    public maxres: ThumbnailsSizeItemModel;
+    public title: string;
 }

@@ -14,7 +14,10 @@ export class SearchInputComponent implements OnInit {
   }
 
   public search(): void {
-    this.boardService.setSearchText(this.searchText);
+    if (this.searchText.length > 3) {
+      this.boardService.setSearchText(this.searchText);
+      this.boardService.getData(this.searchText);
+    }
   }
 
 }

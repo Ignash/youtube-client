@@ -1,4 +1,4 @@
 export class PageInfoResponseModel {
-    public totalResults: number;
     public resultsPerPage: number;
+    public totalResults: number;
 }
