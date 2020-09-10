@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, debounceTime } from 'rxjs/operators';
 
 import { SearchResponseModel } from '../models/search-response.model';
 import { SearchItemModel } from '../models/search-item.model';
