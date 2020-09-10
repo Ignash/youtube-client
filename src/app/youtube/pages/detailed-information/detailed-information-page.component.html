@@ -1,12 +1,12 @@
 <section>
-    <video-thumbnail [thumbnail]="data.snippet.thumbnails.high.url"></video-thumbnail>
-    <div class="description"  borderColor [date]="data.snippet.publishedAt">
+    <video-thumbnail [thumbnail]="url |async "></video-thumbnail>
+    <div class="description"  borderColor [date]="publishedAt|async">
         <div class="head-titel">
-            <video-title class="title" [title]="data.snippet.title"></video-title>
-            <p>{{ data.snippet.publishedAt | date : 'EEEE, MMMM d, y' }}</p>
+            <video-title class="title" [title]="title|async"></video-title>
+            <p>{{ publishedAt|async| date : 'EEEE, MMMM d, y' }}</p>
         </div>
         <h2>Description:</h2>
-        <p>{{ data.snippet.description }}</p>
+        <p>{{ description|async }}</p>
 
         <div class="statistic">
             <views-count class="statistic-icon" [viewCount]="data.statistics.viewCount"></views-count>

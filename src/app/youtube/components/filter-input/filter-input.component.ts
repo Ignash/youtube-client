@@ -1,5 +1,5 @@
 // tslint:disable-next-line:max-line-length
-import { Component, OnInit, OnChanges, SimpleChanges, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, ViewChild, ElementRef, Input } from '@angular/core';
 import { BoardService } from '../../../core/services/board.service';
 
 @Component({
@@ -9,16 +9,17 @@ import { BoardService } from '../../../core/services/board.service';
 })
 export class FilterInputComponent implements OnInit, OnChanges {
   public str: string;
+  @Input() public focus: boolean;
 
   @ViewChild('focus', {static: false})
   public inputElem: ElementRef;
 
   constructor( private boardService: BoardService ) {
-    this.boardService.focusInput$.subscribe(value => {
-      if ( this.inputElem ) {
-        this.inputElem.nativeElement.focus();
-      }
-    });
+    // this.boardService.focusInput$.subscribe(value => {
+    //   if ( this.inputElem ) {
+    //     this.inputElem.nativeElement.focus();
+    //   }
+    // });
   }
 
   public ngOnInit(): void {

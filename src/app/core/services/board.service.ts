@@ -17,11 +17,9 @@ export class BoardService {
 
   public sortingValue$: Subject<string> = new Subject();
   public filtrStr$: Subject<string> = new Subject();
-  public focusInput$: Subject<boolean> = new Subject();
   public searchText$: Subject<string> = new Subject();
   public showSettings$: Subject<boolean> = new Subject();
   public data: SearchResponseModel;
-  public dataItems: SearchItemModel[];
   public data$: Subject<SearchItemModel[]> = new Subject();
   public statistics$: Subject<SearchResponseModel> = new Subject();
   public searchText: string;
@@ -52,7 +50,6 @@ export class BoardService {
         newItem.statistics = statisticsItems.filter(statisticItem => idItem === statisticItem.id)[0].statistics;
         return newItem;
       });
-      this.dataItems = newData;
       this.data$.next(newData);
     });
   }
@@ -67,9 +64,6 @@ export class BoardService {
   }
   public setFiltrStr(value: string): void {
     this.filtrStr$.next(value);
-  }
-  public setFocusInput(value: boolean): void {
-    this.focusInput$.next(value);
   }
 
   public setSearchText(text: string): void {

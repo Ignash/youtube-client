@@ -4,7 +4,7 @@ import { DetailedItemModel } from '../../models/detailed-item.model';
 import { DetailedResponseModel } from '../../models/datailed-response.model';
 import { BoardService } from '../../../core/services/board.service';
 import { DetailedInformationService } from '../../services/detailed-information.service';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 
 @Component({
@@ -14,8 +14,15 @@ import { mergeMap } from 'rxjs/operators';
 })
 export class DetailedInformationPageComponent implements OnInit {
 
-  public id: string;
   public data: DetailedItemModel;
+  public url: Observable<string>;
+  public publishedAt: Observable<string>;
+  public title: Observable<string>;
+  public description: Observable<string>;
+  public viewCount: Observable<string>;
+  public likeCount: Observable<string>;
+  public dislikeCount: Observable<string>;
+  public commentCount: Observable<string>;
 
   // tslint:disable-next-line:max-line-length
   constructor( public route: ActivatedRoute, private boardService: BoardService, private detailedInformationService: DetailedInformationService ) {
@@ -26,8 +33,15 @@ export class DetailedInformationPageComponent implements OnInit {
       })
     )
     .subscribe(data => {
-      console.log(data);
       this.data = data.items[0];
+      this.publishedAt = of(data.items[0].snippet.publishedAt);
+      this.title = of(data.items[0].snippet.title);
+      this.description = of(data.items[0].snippet.description);
+      this.url = of(data.items[0].snippet.thumbnails.standard.url);
+      this.viewCount = of(data.items[0].statistics.viewCount);
+      this.likeCount = of(data.items[0].statistics.likeCount);
+      this.dislikeCount = of(data.items[0].statistics.dislikeCount);
+      this.commentCount = of(data.items[0].statistics.commentCount);
     });
   }
 

@@ -1,4 +1,4 @@
-import { ThumbnailsItemModel } from '../../core/models/thumbnails-item.model';
+import { ThumbnailsItemModel } from '../models/thumbnails-item.model';
 import { LocalizedDetailedItemModel } from './localized-detailed-item.model';
 
 export class SnippedDetailedItemModel {
