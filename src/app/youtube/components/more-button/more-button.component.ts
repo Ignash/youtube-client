@@ -12,7 +12,7 @@ export class MoreButtonComponent implements OnInit {
   constructor( private router: Router) { }
   @HostListener('click')
   private onClick(): void {
-    this.router.navigate(['main', this.id]);
+    this.router.navigate(['search', this.id]);
    }
 
   public ngOnInit(): void { }

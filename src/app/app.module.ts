@@ -6,12 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
-import { DetailedInformationPageComponent } from './pages/detailed-information/detailed-information-page/detailed-information-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DetailedInformationPageComponent,
   ],
   imports: [
     BrowserModule,
