@@ -22,7 +22,7 @@ import { HeaderComponent } from './pages/header/header.component';
     FormsModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
   ]
 })
 export class CoreModule { }

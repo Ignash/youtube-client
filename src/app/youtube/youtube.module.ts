@@ -20,6 +20,7 @@ import { BorderColorDirective } from './directives/border-color.directive';
 import { SortingPipe } from './pipes/sorting.pipe';
 import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
 import { DetailedInformationPageComponent } from './pages/detailed-information/detailed-information-page.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -45,11 +46,13 @@ const routes: Routes = [
     SortingPipe,
     FilterByWordPipe,
     DetailedInformationPageComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule.forChild(routes),
-  ]
+  ],
+
 })
 export class YoutubeModule { }
