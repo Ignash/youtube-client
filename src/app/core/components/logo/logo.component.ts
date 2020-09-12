@@ -12,7 +12,7 @@ export class LogoComponent implements OnInit {
 
   @HostListener('click')
   private onClick(): void {
-    this.router.navigate(['main']);
+    this.router.navigate(['search']);
    }
   public ngOnInit(): void {
   }
