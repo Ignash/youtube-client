@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login-page',
@@ -8,21 +10,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
+
+  public loginForm: FormGroup;
+
   @ViewChildren('input') public components: QueryList<ElementRef>;
 
-  constructor( public authService: AuthService, public router: Router ) { }
+  constructor( public authService: AuthService, public router: Router ) {
+    this.loginForm = new FormGroup({
+      'login': new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+      'password': new FormControl('', [Validators.required, Validators.minLength(4)])
+    });
+   }
 
   public ngOnInit(): void {
   }
 
   public login(): void {
-    let logo: string = this.components.first.nativeElement.value;
-    let password: string = this.components.last.nativeElement.value;
+    const controls: {[key: string]: AbstractControl} = this.loginForm.controls;
 
-    this.authService.authUser(logo, password);
+    if (this.loginForm.invalid) {
+      Object.keys(controls)
+      .forEach(controlName => controls[controlName].markAsTouched());
+      return;
+    }
 
-    this.router.navigateByUrl('/main');
-    this.components.first.nativeElement.value = '';
-    this.components.last.nativeElement.value = '';
+    this.authService.authUser(this.loginForm.value);
+    this.router.navigateByUrl('/search');
+
   }
 }

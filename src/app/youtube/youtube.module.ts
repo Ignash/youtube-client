@@ -19,7 +19,7 @@ import { FilterInputComponent } from './components/filter-input/filter-input.com
 import { BorderColorDirective } from './directives/border-color.directive';
 import { SortingPipe } from './pipes/sorting.pipe';
 import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
-import { DetailedInformationPageComponent } from './pages/detailed-information/detailed-information-page/detailed-information-page.component';
+import { DetailedInformationPageComponent } from './pages/detailed-information/detailed-information-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },

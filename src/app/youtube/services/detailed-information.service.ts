@@ -1,24 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map, filter, tap } from 'rxjs/operators';
-import { SearchResponseModel } from '../models/search-response.model';
-import { SearchItemModel } from '../models/search-item.model';
+import { Observable, of } from 'rxjs';
+import { DetailedResponseModel } from '../models/datailed-response.model';
+import { Config } from '../../config/app.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DetailedInformationService {
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient, private config: Config  ) { }
 
-  public getData(id: string):  Observable<SearchItemModel[]> {
-    let dataValue: Observable<SearchItemModel[]>;
-    dataValue = this.http.get('../../../assets/data/response.json').pipe(
-      map((item: SearchResponseModel) => {
-        return [...item.items.filter((elem: SearchItemModel) => elem.id === id)];
-      })
-    );
-    return dataValue;
+  public getDataDetailed(id: string):  Observable<DetailedResponseModel> {
+    return this.http.get<DetailedResponseModel>(`https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${this.config.USER_KEY}
+    &part=snippet,statistics`);
   }
 }

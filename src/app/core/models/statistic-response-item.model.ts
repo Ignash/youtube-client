@@ -1,10 +1,8 @@
-import { SnippedItemModel } from './snipped-item.model';
 import { StatisticsItemModel } from './statistics-item.model';
 
-export class SearchItemModel {
-    public kind: string;
+export class StatisticRensponseItemModel {
     public etag: string;
     public id: string;
-    public snippet: SnippedItemModel;
+    public kind: string;
     public statistics: StatisticsItemModel;
 }

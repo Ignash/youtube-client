@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { BoardService } from '../../services/board.service';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'setting-button',
@@ -9,14 +9,13 @@ import { BoardService } from '../../services/board.service';
 export class SettingButtonComponent implements OnInit {
   @Output() public changeShowSettings: EventEmitter<boolean> = new EventEmitter<boolean>();
   public settings: boolean = false;
-  constructor( private boardService: BoardService) { }
+  constructor( private settingsService: SettingsService) { }
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 
   public showSettings(): void {
     this.settings = !this.settings;
-    this.boardService.changeShowSettings(this.settings);
+    this.settingsService.changeShowSettings(this.settings);
   }
 
 }

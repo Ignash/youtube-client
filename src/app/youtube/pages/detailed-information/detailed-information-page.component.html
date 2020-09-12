@@ -1,0 +1,19 @@
+<section>
+    <video-thumbnail [thumbnail]="url |async "></video-thumbnail>
+    <div class="description"  borderColor [date]="publishedAt|async">
+        <div class="head-titel">
+            <video-title class="title" [title]="title|async"></video-title>
+            <p>{{ publishedAt|async| date : 'EEEE, MMMM d, y' }}</p>
+        </div>
+        <h2>Description:</h2>
+        <p>{{ description|async }}</p>
+
+        <div class="statistic">
+            <views-count class="statistic-icon" [viewCount]="viewCount | async"></views-count>
+            <likes-count class="statistic-icon" [likeCount]="likeCount | async"></likes-count>
+            <dislikes-count class="statistic-icon" [dislikeCount]="dislikeCount | async"></dislikes-count>
+            <comments-count class="statistic-icon" [commentCount]="commentCount | async"></comments-count>
+        </div>
+    </div>
+
+</section>

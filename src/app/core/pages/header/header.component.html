@@ -1,7 +1,7 @@
 <header>
     <div class="center">
         <logo></logo>
-        <search-input (startSearch)="startShow($event)"></search-input>
+        <search-input (startSearch)="startShowInput($event)"></search-input>
         <setting-button (changeShowSettings)="showSettings($event)" *ngIf="showBlock"></setting-button>
     </div>
     <user-logo></user-logo>

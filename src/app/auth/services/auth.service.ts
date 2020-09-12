@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor() { }
+  public auth: BehaviorSubject<boolean>;
+  constructor() {
+    this.auth = new BehaviorSubject<boolean>(!!localStorage.getItem('user'));
+   }
 
   public getAuthUser(): User {
     if (localStorage.getItem('user')) {
       let user: User = JSON.parse(localStorage.getItem('user'));
-      console.log(user);
       return user;
     }
   }
 
-  public authUser(logo: string, password: string): void {
-    let user: User = {
-      login: logo,
-      password: password
-    };
-    localStorage.setItem('user', JSON.stringify(user));
+  public authUser(userData: User): void {
+    localStorage.setItem('user', JSON.stringify(userData));
   }
 
   public logOut(): void {

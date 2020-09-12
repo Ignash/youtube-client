@@ -1,4 +1,4 @@
 <section>
-    <filter-buttons></filter-buttons>
-    <filter-input></filter-input>
+    <filter-buttons (changeFocusInput)="setFocusInput($event)"></filter-buttons>
+    <filter-input [focus]="focusInput"></filter-input>
 </section>

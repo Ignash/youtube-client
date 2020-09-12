@@ -4,8 +4,8 @@ import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-pag
 import { AuthGuard } from './core/guard/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'main', pathMatch: 'full' },
-  { path: 'main',
+  { path: '', redirectTo: 'search', pathMatch: 'full' },
+  { path: 'search',
     loadChildren: () => import('./youtube/youtube.module').then(m => m.YoutubeModule),
     canActivate: [AuthGuard]
   },

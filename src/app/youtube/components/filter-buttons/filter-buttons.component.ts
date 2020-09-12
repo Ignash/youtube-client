@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { BoardService } from '../../../core/services/board.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { SettingsService } from '../../../core/services/settings.service';
 
 @Component({
   selector: 'filter-buttons',
@@ -9,8 +9,9 @@ import { BoardService } from '../../../core/services/board.service';
 export class FilterButtonsComponent implements OnInit {
   public sortingValue: string;
   public focusInput: boolean;
+  @Output() public changeFocusInput: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor( private boardService: BoardService) { }
+  constructor( private settingsService: SettingsService) { }
 
   private setSortingValue(sort: string): void {
     if ( sort ) {
@@ -20,7 +21,7 @@ export class FilterButtonsComponent implements OnInit {
         this.sortingValue = sort + 'Up';
       }
     }
-    this.boardService.setSortingValue(this.sortingValue);
+    this.settingsService.setSortingValue(this.sortingValue);
   }
 
   public ngOnInit(): void {
@@ -32,7 +33,7 @@ export class FilterButtonsComponent implements OnInit {
 
   public setFocus(): void {
     this.focusInput = !this.focusInput;
-    this.boardService.setFocusInput(this.focusInput);
+    this.changeFocusInput.emit(this.focusInput);
   }
 
 }

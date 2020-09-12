@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { BoardService } from '../../services/board.service';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-header',
@@ -8,24 +8,23 @@ import { BoardService } from '../../services/board.service';
 })
 export class HeaderComponent implements OnInit {
   public showBlock: boolean;
-  public settings: boolean;
   @Output() public showBlockToParent: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() public showSettingsToParent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor( private boardService: BoardService ) { }
+  constructor( private searchService: SearchService ) { }
 
   public ngOnInit(): void {
-    this.boardService.searchText$.subscribe(text => {
-      this.showBlock = !!text;
+
+    this.searchService.data$.subscribe(data => {
+      this.showBlock = !!data;
     });
   }
 
-  public startShow(data: boolean): void {
+  public startShowInput(data: boolean): void {
     this.showBlockToParent.emit(data);
   }
 
   public showSettings(data: boolean): void {
-    this.settings = data;
     this.showSettingsToParent.emit(data);
   }
 
