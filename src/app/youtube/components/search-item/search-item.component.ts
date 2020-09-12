@@ -9,8 +9,6 @@ import { SearchItemModel } from '../../../core/models/search-item.model';
 export class SearchItemComponent implements OnInit {
   @Input() public item: SearchItemModel;
 
-  // imgUrl: string = this.item;
-
   constructor() { }
 
   public ngOnInit(): void {

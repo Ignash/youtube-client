@@ -18,12 +18,8 @@ export class AuthService {
     }
   }
 
-  public authUser(logo: string, password: string): void {
-    let user: User = {
-      login: logo,
-      password: password
-    };
-    localStorage.setItem('user', JSON.stringify(user));
+  public authUser(userData: User): void {
+    localStorage.setItem('user', JSON.stringify(userData));
   }
 
   public logOut(): void {

@@ -1,8 +1,16 @@
-<section>
+<form  [formGroup]="loginForm">
     <h1>Login</h1>
     <label for="login">login</label>
-    <input #input id="login" type="text">
+    <input id="login" type="text" formControlName="login">
+    <div class="alert"
+        *ngIf="loginForm.controls['login'].invalid && loginForm.controls['login'].touched">
+        login must contain only letters
+    </div>
     <label for="login">password</label>
-    <input #input id="password" type="password">
+    <input id="password" type="password" formControlName="password">
+    <div class="alert"
+        *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+        password must be more than 4 characters
+    </div>
     <button type="button" class="button-blue" (click)="login()">Login</button>
-</section>
+</form>

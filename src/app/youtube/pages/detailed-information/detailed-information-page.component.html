@@ -9,10 +9,10 @@
         <p>{{ description|async }}</p>
 
         <div class="statistic">
-            <views-count class="statistic-icon" [viewCount]="data.statistics.viewCount"></views-count>
-            <likes-count class="statistic-icon" [likeCount]="data.statistics.likeCount"></likes-count>
-            <dislikes-count class="statistic-icon" [dislikeCount]="data.statistics.dislikeCount"></dislikes-count>
-            <comments-count class="statistic-icon" [commentCount]="data.statistics.commentCount"></comments-count>
+            <views-count class="statistic-icon" [viewCount]="viewCount | async"></views-count>
+            <likes-count class="statistic-icon" [likeCount]="likeCount | async"></likes-count>
+            <dislikes-count class="statistic-icon" [dislikeCount]="dislikeCount | async"></dislikes-count>
+            <comments-count class="statistic-icon" [commentCount]="commentCount | async"></comments-count>
         </div>
     </div>
 

@@ -1,6 +1,6 @@
 // tslint:disable-next-line:max-line-length
 import { Component, OnInit, OnChanges, SimpleChanges, ViewChild, ElementRef, Input } from '@angular/core';
-import { BoardService } from '../../../core/services/board.service';
+import { SettingsService } from '../../../core/services/settings.service';
 
 @Component({
   selector: 'filter-input',
@@ -14,13 +14,7 @@ export class FilterInputComponent implements OnInit, OnChanges {
   @ViewChild('focus', {static: false})
   public inputElem: ElementRef;
 
-  constructor( private boardService: BoardService ) {
-    // this.boardService.focusInput$.subscribe(value => {
-    //   if ( this.inputElem ) {
-    //     this.inputElem.nativeElement.focus();
-    //   }
-    // });
-  }
+  constructor( private settingsService: SettingsService ) { }
 
   public ngOnInit(): void {
   }
@@ -32,7 +26,7 @@ export class FilterInputComponent implements OnInit, OnChanges {
   }
 
   public changeStr(value: string): void {
-    this.boardService.setFiltrStr(value);
+    this.settingsService.setFiltrStr(value);
   }
 
 }

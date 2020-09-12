@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardService } from '../../../core/services/board.service';
+import { SettingsService } from '../../../core/services/settings.service';
 
 @Component({
   selector: 'main-page',
@@ -8,17 +8,14 @@ import { BoardService } from '../../../core/services/board.service';
 })
 export class MainPageComponent implements OnInit {
   public showFilterBlock: boolean;
-  public showSearchModel: boolean;
 
-  constructor( private boardService: BoardService) { }
+  constructor( private settingsService: SettingsService) { }
 
   public ngOnInit(): void {
-    this.boardService.showSettings$.subscribe(value => {
+    this.settingsService.showSettings$.subscribe(value => {
       this.showFilterBlock = value;
     });
-    this.boardService.searchText$.subscribe(text => {
-      this.showSearchModel = !!text;
-    });
+
   }
 
 }
