@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChildren, ElementRef, QueryList } from '@angular
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login-page',
@@ -12,8 +11,6 @@ import { User } from '../../models/user';
 export class LoginPageComponent implements OnInit {
 
   public loginForm: FormGroup;
-
-  @ViewChildren('input') public components: QueryList<ElementRef>;
 
   constructor( public authService: AuthService, public router: Router ) {
     this.loginForm = new FormGroup({

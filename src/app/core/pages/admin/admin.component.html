@@ -1,0 +1,29 @@
+<form  [formGroup]="newCardForm">
+    <h1>Create new card</h1>
+    <label for="titel">Titel</label>
+    <input id="titel" type="text" formControlName="titel">
+    <div class="alert"
+        *ngIf="newCardForm.controls['titel'].invalid && newCardForm.controls['titel'].touched">
+        required
+    </div>
+    <label for="disctiption">Disctiption</label>
+    <input id="disctiption" type="text" formControlName="disctiption">
+    <div class="alert"
+        *ngIf="newCardForm.controls['disctiption'].invalid && newCardForm.controls['disctiption'].touched">
+        required
+    </div>
+    <label for="img">Img</label>
+    <input id="img" type="text" formControlName="img">
+    <div class="alert"
+        *ngIf="newCardForm.controls['img'].invalid && newCardForm.controls['img'].touched">
+        required
+    </div>
+    <label for="linkVideo">Link Video</label>
+    <input id="linkVideo" type="text" formControlName="linkVideo">
+    <div class="alert"
+        *ngIf="newCardForm.controls['linkVideo'].invalid && newCardForm.controls['linkVideo'].touched">
+        required
+    </div>
+    <button type="button" class="button-blue" (click)="create()">Create card</button>
+</form>
+

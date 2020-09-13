@@ -15,9 +15,9 @@ export class HeaderComponent implements OnInit {
 
   public ngOnInit(): void {
 
-    this.searchService.data$.subscribe(data => {
-      this.showBlock = !!data;
-    });
+    // this.searchService.data$.subscribe(data => {
+    //   this.showBlock = !!data;
+    // });
   }
 
   public startShowInput(data: boolean): void {
