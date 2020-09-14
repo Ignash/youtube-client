@@ -16,7 +16,6 @@ export class MainPageComponent implements OnInit {
   public ngOnInit(): void {
 
     this.loaderService.show.subscribe(data => {
-      console.log(89);
       this.showLoader = data;
     });
 

@@ -8,4 +8,10 @@ export class SearchItemModel {
     public kind: string;
     public snippet: SnippedItemModel;
     public statistics: StatisticsItemModel;
+
+    public titel?: string;
+    public description?: string;
+    public img?: string;
+    public linkVideo?: string;
+    public date?: string;
 }

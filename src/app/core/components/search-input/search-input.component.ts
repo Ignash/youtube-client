@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { fromEvent, Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { IAppState } from '../../../redux/state/app.state';
+import { Store } from '@ngrx/store';
+import { GetSearchData } from '../../../redux/actions/search.actions';
 
 @Component({
   selector: 'search-input',
@@ -12,7 +15,7 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
   @ViewChild('searchInput') public input: ElementRef;
   public input$: Observable<InputEvent>;
 
-  constructor( private searchService: SearchService) { }
+  constructor( private searchService: SearchService, private store: Store<IAppState>) { }
 
   public ngOnInit(): void { }
 
@@ -23,7 +26,8 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
       distinctUntilChanged(),
     ).subscribe(event => {
       if (this.input.nativeElement.value.length > 2) {
-        this.searchService.getData(this.input.nativeElement.value);
+        this.searchService.setSearchText(this.input.nativeElement.value);
+        this.store.dispatch(new GetSearchData());
       }
     });
   }

@@ -7,6 +7,11 @@ import { AppComponent } from './app.component';
 import { LoaderInterceptor } from './core/Interceptor/loader.interceptor';
 
 import { CoreModule } from './core/core.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { appReducers } from './redux/reducers/app.reducers';
+import { SearchEffects } from './redux/effects/search.effects';
+import { CustomEffects } from './redux/effects/custom.effects';
 
 @NgModule({
   declarations: [
@@ -18,6 +23,8 @@ import { CoreModule } from './core/core.module';
     HttpClientModule,
     FormsModule,
     CoreModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([SearchEffects, CustomEffects]),
   ],
   providers: [
     {

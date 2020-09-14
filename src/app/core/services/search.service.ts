@@ -1,8 +1,8 @@
 
 import { Injectable } from '@angular/core';
-import { Subject, Observable, BehaviorSubject } from 'rxjs';
+import { Subject, Observable, BehaviorSubject, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, map } from 'rxjs/operators';
 
 import { SearchResponseModel } from '../models/search-response.model';
 import { SearchItemModel } from '../models/search-item.model';
@@ -16,41 +16,48 @@ import { Config } from '../../config/app.config';
 })
 export class SearchService {
 
-  private data: SearchResponseModel;
-  public data$: BehaviorSubject<SearchItemModel[]> = new BehaviorSubject(null);
+  public searchText: string;
 
   constructor( private http: HttpClient, private config: Config ) { }
 
-  public getData(searchText: string): void {
-    this.http.get<SearchResponseModel>(`https://www.googleapis.com/youtube/v3/search?key=${this.config.USER_KEY}&type=video&part=snippet&maxResults=15&q=${searchText}`)
+  public getData(): Observable<SearchItemModel[]> {
+    return this.http.get<SearchResponseModel>(`https://www.googleapis.com/youtube/v3/search?key=${this.config.USER_KEY}&type=video&part=snippet&maxResults=15&q=${this.searchText}`)
     .pipe(
-      mergeMap<SearchResponseModel, Observable<Object>>((data: SearchResponseModel): Observable<Object> => {
-        this.data = data;
+      // tslint:disable-next-line:max-line-length
+      mergeMap<SearchResponseModel, Observable<SearchItemModel[]>>((data: SearchResponseModel): Observable<SearchItemModel[]> => {
         let items: SearchItemModel[] = [...data.items];
         let idItems: string[] = items.map((item: SearchItemModel) => {
           return item.id.videoId;
         });
         let idItemsStr: string = idItems.join(',');
-        return this.getStatistics(idItemsStr);
+        return this.getStatistics(idItemsStr).pipe(
+          map((statisticData: StatisticsResponsModel)  => {
+            let statisticsItems: StatisticRensponseItemModel[] = statisticData.items;
+            let oldData: SearchItemModel[] = data.items;
+
+            let newData: SearchItemModel[] = oldData.map(item => {
+              let newItem: SearchItemModel = item;
+              let idItem: string = item.id.videoId;
+
+              newItem.statistics = statisticsItems
+                                   .filter(statisticItem => idItem === statisticItem.id)[0]
+                                   .statistics;
+              return newItem;
+            });
+
+            return newData;
+          } )
+        );
       })
-    )
-    .subscribe((data: StatisticsResponsModel) => {
-      console.log(data.items);
-      let statisticsItems: StatisticRensponseItemModel[] = data.items;
-      let oldData: SearchItemModel[] = this.data.items;
-      let newData: SearchItemModel[] = oldData.map(item => {
-        let newItem: SearchItemModel = item;
-        let idItem: string = item.id.videoId;
-        // tslint:disable-next-line:max-line-length
-        newItem.statistics = statisticsItems.filter(statisticItem => idItem === statisticItem.id)[0].statistics;
-        return newItem;
-      });
-      this.data$.next(newData);
-    });
+    );
   }
 
-  public getStatistics(ids: string): Observable<Object> {
-    return this.http.get(`https://www.googleapis.com/youtube/v3/videos?id=${ids}&key=${this.config.USER_KEY}
+  public setSearchText(text: string): void {
+    this.searchText = text;
+  }
+
+  public getStatistics(ids: string): Observable<StatisticsResponsModel> {
+    return this.http.get<StatisticsResponsModel>(`https://www.googleapis.com/youtube/v3/videos?id=${ids}&key=${this.config.USER_KEY}
     &part=statistics`);
   }
 

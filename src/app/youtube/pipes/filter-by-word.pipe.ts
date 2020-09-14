@@ -7,7 +7,7 @@ import { SearchItemModel } from '../../core/models/search-item.model';
 export class FilterByWordPipe implements PipeTransform {
   public transform(array: SearchItemModel[], str: string):  SearchItemModel[] {
     if (str) {
-      return array.filter((item: SearchItemModel) => item.snippet.title.toLocaleLowerCase().includes(str));
+      return array.filter((item: SearchItemModel) => (item?.snippet?.title||item.titel).toLocaleLowerCase().includes(str));
     }
     return array;
   }

@@ -10,15 +10,15 @@ export class SortingPipe implements PipeTransform {
     let newArray: SearchItemModel[] = array;
     if ( sortValue && sortValue.includes('date') ) {
       newArray = array.sort((a: SearchItemModel, b: SearchItemModel): number => {
-        let date1: number = new Date(a.snippet.publishedAt).getTime();
-        let date2: number = new Date(b.snippet.publishedAt).getTime();
+        let date1: number = new Date(a?.snippet?.publishedAt || a.date).getTime();
+        let date2: number = new Date(b?.snippet?.publishedAt || b.date).getTime();
         return  sortValue === 'dateUp' ? date1 - date2 : date2 - date1;
       });
     }
     if ( sortValue && sortValue.includes('views') ) {
       newArray = array.sort((a: SearchItemModel, b: SearchItemModel): number => {
-        let viewCount1: number = +a.statistics.viewCount;
-        let viewCount2: number = +b.statistics.viewCount;
+        let viewCount1: number = +(a?.statistics?.viewCount || 0);
+        let viewCount2: number = +(b?.statistics?.viewCount || 0);
         return sortValue === 'viewsUp' ? viewCount1 - viewCount2 : viewCount2 - viewCount1;
       });
     }
