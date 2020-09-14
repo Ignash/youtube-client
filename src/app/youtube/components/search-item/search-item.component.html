@@ -1,12 +1,12 @@
-<section borderColor [date]="item.snippet.publishedAt">
-    <video-thumbnail [thumbnail]="item.snippet.thumbnails.medium.url"></video-thumbnail>
+<section borderColor [date]="date">
+    <video-thumbnail [thumbnail]="thumbnail"></video-thumbnail>
     <div class="statistic">
-        <views-count class="statistic-icon" [viewCount]="item.statistics.viewCount"></views-count>
-        <likes-count class="statistic-icon" [likeCount]="item.statistics.likeCount"></likes-count>
-        <dislikes-count class="statistic-icon" [dislikeCount]="item.statistics.dislikeCount"></dislikes-count>
-        <comments-count class="statistic-icon" [commentCount]="item.statistics.commentCount"></comments-count>
+        <views-count class="statistic-icon" [viewCount]="item?.statistics?.viewCount"></views-count>
+        <likes-count class="statistic-icon" [likeCount]="item?.statistics?.likeCount"></likes-count>
+        <dislikes-count class="statistic-icon" [dislikeCount]="item?.statistics?.dislikeCount"></dislikes-count>
+        <comments-count class="statistic-icon" [commentCount]="item?.statistics?.commentCount"></comments-count>
     </div>
-    <video-title class="title" [title]="item.snippet.title"></video-title>
-    <more-button [id]="item.id.videoId"></more-button>
+    <video-title class="title" [title]="title"></video-title>
+    <more-button [id]="item?.id?.videoId"></more-button>
 
 </section>

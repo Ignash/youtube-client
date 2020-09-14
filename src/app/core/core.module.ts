@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { LogoComponent } from './components/logo/logo.component';
@@ -23,7 +25,8 @@ import { AdminComponent } from './pages/admin/admin.component';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule,
   ],
   exports: [
     HeaderComponent,

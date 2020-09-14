@@ -8,15 +8,12 @@ export const customReducers = (
 ): ICustomState => {
   switch (action.type) {
     case ECustomActions.AddToCustom: {
-      console.log(state);
-      console.log(action.payload);
       return {
         ...state,
         customItems: [...state.customItems, action.payload]
       };
     }
     case ECustomActions.SetCustom: {
-      console.log('SetCustom:' + JSON.stringify(state));
       return {
         ...state
       };

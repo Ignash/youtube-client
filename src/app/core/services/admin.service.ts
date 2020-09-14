@@ -15,7 +15,6 @@ export class AdminService {
   }
 
   public createCard(): Observable<CustomItemModel> {
-    console.log('creat:' + this.newCard);
     return of(this.newCard);
   }
 }

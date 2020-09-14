@@ -7,12 +7,18 @@ import { SearchItemModel } from '../../../core/models/search-item.model';
   styleUrls: ['./search-item.component.scss']
 })
 export class SearchItemComponent implements OnInit {
+  public date: string;
+  public thumbnail: string;
+  public title: string;
+
   @Input() public item: SearchItemModel;
 
   constructor() { }
 
   public ngOnInit(): void {
-
+    this.date = this.item.snippet ? this.item.snippet.publishedAt : this.item.date;
+    this.thumbnail = this.item.snippet ? this.item.snippet.thumbnails.medium.url : this.item.img;
+    this.title = this.item.snippet ? this.item.snippet.title : this.item.titel;
   }
 
 }

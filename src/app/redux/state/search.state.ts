@@ -5,5 +5,5 @@ export interface ISearchState {
 }
 
 export const initialSearchState: ISearchState = {
-  searchData: null
+  searchData: []
 };

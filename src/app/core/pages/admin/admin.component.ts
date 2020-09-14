@@ -30,18 +30,22 @@ export class AdminComponent implements OnInit {
   public create(): void {
     const controls: {[key: string]: AbstractControl} = this.newCardForm.controls;
 
+    let controlsName =  Object.keys(controls);
+
     if (this.newCardForm.invalid) {
-      Object.keys(controls)
+      controlsName
       .forEach(controlName => controls[controlName].markAsTouched());
       return;
     }
     let newCardValue: CustomItemModel = this.newCardForm.value;
+
+    controlsName.forEach(controlName => {
+        controls[controlName].setValue('');
+        controls[controlName].markAsUntouched();
+      });
     this.adminService.setNewCard(newCardValue);
 
-    console.log(newCardValue);
     this.store.dispatch(new SetCustom());
-
-    // this.router.navigateByUrl('/search');
 
   }
 }

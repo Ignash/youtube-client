@@ -11,7 +11,6 @@ export const searchReducers = (
 ): ISearchState => {
   switch (action.type) {
     case ESearchActions.GetSearchDataSuccess: {
-      console.log(state);
       return {
         ...state,
         searchData: action.payload

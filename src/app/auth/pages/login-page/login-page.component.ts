@@ -30,7 +30,6 @@ export class LoginPageComponent implements OnInit {
       .forEach(controlName => controls[controlName].markAsTouched());
       return;
     }
-
     this.authService.authUser(this.loginForm.value);
     this.router.navigateByUrl('/search');
 
